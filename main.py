@@ -24,6 +24,11 @@
 # 			Query Creator
 
 # 			Query Fire
+
+#
+# Deadline: 6th of June
+#
+
 from Question_Classifier import classifyQuestion
 
 switch = {
