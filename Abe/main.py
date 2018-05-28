@@ -3,6 +3,8 @@ import requests
 import spacy
 from SPARQLWrapper import SPARQLWrapper, JSON
 from language_parser import *
+from sparql_req import *
+from language_parser import *
 
 #
 # Run this file
@@ -15,37 +17,6 @@ from language_parser import *
 # Download:
 # sudo pip3 install -u spacy
 # sudo pip3 install SPARQLWrapper
-
-
-def getWikidataConcept(word):		
-	url = "https://www.wikidata.org/w/api.php"
-	params = {'action':'wbsearchentities', 'language':'en', 'format':'json'} #, 'type':'property'}
-	params['search'] = word.rstrip()
-	json = requests.get(url,params).json()
-	return json['search'][0]
-
-def getWikidataProperty(word):		
-	url = "https://www.wikidata.org/w/api.php"
-	params = {'action':'wbsearchentities', 'language':'en', 'format':'json', 'type':'property'}
-	params['search'] = word.rstrip()
-	json = requests.get(url,params).json()
-	return json['search'][0]
-
-def createQuery(concept, prop):
-	query = ("SELECT " + "?targetLabel " + "\n" +
-			"WHERE { " + "wd:" + concept + " wdt:" + prop + " ?target" + "\n" +
-			
-			" SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\". }" + "\n" +
-			" }" + " LIMIT 1")
-	return query
-
-def fireQuery(query):
-	sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
-	# Query request
-	sparql.setQuery(query)
-	sparql.setReturnFormat(JSON)
-	results = sparql.query().convert()
-	return results
 
 def findHighestPrecedenceDependency(doc):
 	nounDep = ""
@@ -146,7 +117,7 @@ def main():
 	# for label in questions:
 	# 	print("Question: " + questions[label])
 	# 	handleQuestion(questions[label])
-	displayDependency(input("Question: "))
+	handleQuestion(input("Question: "))
 	# inp = input("Question: ")
 	# while(inp != '!'):
 	# 	handleQuestion(inp)
