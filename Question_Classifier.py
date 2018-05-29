@@ -38,12 +38,22 @@ def isCountQuestion(question):
 def isWhichQuestion(question):
 	return question.find("which") != -1 or question.find("who") != -1 or question.find("what") != -1 or question.find("how") != -1
 
+def findRoot(doc):
+	for token in doc:
+		if token.dep_ == 'ROOT':
+			return token
+def hasDependency(token, dep):
+	for child in token.children:
+		if child.dep_ == dep:
+			return True
+	return False
+
 def classifyQuestion(question, nlp):
 	parsedQuestion = nlp(question)
 	root = findRoot(parsedQuestion)
 	if not hasDependency(root, "nsubj"):
 		return QuestionTypes.listQuestion
-	elif root == parsedQuestion[0].text:
+	elif root == parsedQuestion[0]:
 		return QuestionTypes.YesNoQuestion
 	elif isCountQuestion(question):
 		return QuestionTypes.countQuestion

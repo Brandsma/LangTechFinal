@@ -30,19 +30,30 @@
 #
 
 from Question_Classifier import classifyQuestion
+from spacyFunctions import *
+from sparqlFunctions import *
 
-switch = {
-	whichQuestion: whichQuestionFunction,
-	listQuestion: listQuestionFunction
-}
+# switch = {
+# 	whichQuestion: whichQuestionFunction,
+# 	listQuestion: listQuestionFunction
+# }
+def main():
+	# Load Spacy
+	nlp = loadSpacyModel()
 
-if __main__ == "__main__":
 	# Input
+	sen = input("Question: ")
+	# Parse sentence
+	doc = nlp(sen)
+
 	# Question Classifier
-	QuestionType = classifyQuestion()
+	QuestionType = classifyQuestion(sen, nlp)
 	# Switch based on question type
 		# Function for each question
 		# Each question returns an answer
-	answer = switch[QuestionType](question)
-	print answer
-		
+	print(QuestionType)
+	# answer = switch[QuestionType](question)
+	# print answer
+
+if __name__ == "__main__":
+	main()
