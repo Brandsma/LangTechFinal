@@ -25,6 +25,7 @@
 											# Handle Special cases (could you give me the population of the Netherlands?)
 											# Otherwise raise error
 from enum import Enum
+
 class QuestionTypes(Enum):
 	whichQuestion = 1
 	countQuestion = 2
@@ -33,23 +34,27 @@ class QuestionTypes(Enum):
 	HowBigQuestion = 5
 
 def isCountQuestion(question):
+	question = question.lower()
 	return question.find("how many") != -1 or question.find("how much") != -1
 
 def isWhichQuestion(question):
-	return question.find("which") != -1 or question.find("who") != -1 or question.find("what") != -1 or question.find("how") != -1
+	question = question.lower()
+	return question.find("which") != -1 or question.find("who") != -1 or \
+	question.find("what") != -1 or (question.find("how") != -1 and question.find("big") == -1)
+	# How large
 
 def findRoot(doc):
 	for token in doc:
 		if token.dep_ == 'ROOT':
 			return token
+
 def hasDependency(token, dep):
 	for child in token.children:
 		if child.dep_ == dep:
 			return True
 	return False
 
-def classifyQuestion(question, nlp):
-	parsedQuestion = nlp(question)
+def classifyQuestion(question, parsedQuestion):
 	root = findRoot(parsedQuestion)
 	if not hasDependency(root, "nsubj"):
 		return QuestionTypes.listQuestion

@@ -29,31 +29,37 @@
 # Deadline: 6th of June
 #
 
-from Question_Classifier import classifyQuestion
+from Question_Classifier import classifyQuestion, QuestionTypes
 from spacyFunctions import *
 from sparqlFunctions import *
+from QA_System import *
 
-# switch = {
-# 	whichQuestion: whichQuestionFunction,
-# 	listQuestion: listQuestionFunction
-# }
 def main():
+	questionParseDict = {
+		QuestionTypes.whichQuestion : whichQuestionParser,
+		QuestionTypes.countQuestion : countQuestionParser,
+		QuestionTypes.listQuestion : listQuestionParser,
+		QuestionTypes.YesNoQuestion : YesNoQuestionParser,
+		QuestionTypes.HowBigQuestion : HowBigQuestionParser
+	}
 	# Load Spacy
+	print("Please wait for the Spacy model to load...")
 	nlp = loadSpacyModel()
 
 	# Input
-	sen = input("Question: ")
+	sen = ""
+	while sen == "":
+		sen = input("Question: ")
 	# Parse sentence
 	doc = nlp(sen)
 
 	# Question Classifier
-	QuestionType = classifyQuestion(sen, nlp)
+	QuestionType = classifyQuestion(sen, doc)
 	# Switch based on question type
 		# Function for each question
 		# Each question returns an answer
-	print(QuestionType)
-	# answer = switch[QuestionType](question)
-	# print answer
+	answer = questionParseDict[QuestionType](sen, nlp)
+	print(answer) 
 
 if __name__ == "__main__":
 	main()
