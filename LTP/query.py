@@ -1,4 +1,5 @@
 import requests
+import traceback
 
 from replaceQuery import *
 
@@ -54,15 +55,16 @@ def formatResults(results):
 		string = ""
 		for var in item :
 			li[var] = item[var]['value']
-			#string += li[var] + "\t"				
+			string += li[var] + "\t"				
 			#print(li[var], "\t")
 		#string += "\n"
 		#print(string)
-		returnResult.append(li)
+		returnResult.append(string)
 	#print(returnResult)
-	for result in returnResult:
-		for k, v in result.items():
-			print(v, "\t")
+	#for result in returnResult:
+	#	for k, v in result.items():
+	#		print(v, "\t")
+	#s		print("hello")
 	return returnResult
 	
 
@@ -74,10 +76,17 @@ def fireQuery(query, replaceDictionary):
 		print("\n\n\n")
 		print(query1)
 		print("\n\n\n")
-		data = sendQuery(query1)
-		result = formatResults(data)
-		if result != [] and (('boolean' in result) == False or result['boolean'] != ["false"]):
-			return result
-	if (('boolean' in result) == True and result['boolean'] == ["false"]):
+		try:
+			data = sendQuery(query1)
+			result = formatResults(data)
+			print(type(result))
+			print(result)
+			if type(result) == type({}) and boolean in result:
+				print("Type: " + str(type(result['boolean'])))
+			if result != [] and result != [False]:
+				return result
+		except Exception:
+			traceback.print_exc()
+	if (result == [False]):
 		return result
 	raise ValueError

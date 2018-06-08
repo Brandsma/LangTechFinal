@@ -7,6 +7,12 @@ class Query(object):
 	MAX_OPTIONS = 3
 
 	def __init__(self, query, replaceDictionary):
+		self.query = ""
+		self.replaceDictionary = {}
+		self.i = 0
+		self.n = {}
+		self.totalN = 1;
+		self.MAX_OPTIONS = 3
 		self.query = query
 		self.replaceDictionary = replaceDictionary
 		self.countCombinations()
@@ -34,10 +40,14 @@ class Query(object):
 		for k, v in self.replaceDictionary.items():
 			#print(k, ", ", v[m%self.n[k]])
 			#print(query)
-			query1 = query1.replace(k, v[0] + v[1][m%self.n[k]])#"wd:"+v[m%3])
+			query1 = query1.replace(k + " ", v[0] + v[1][m%self.n[k]] + " ")
+			query1 = query1.replace(k + ".", v[0] + v[1][m%self.n[k]] + ".")
+			query1 = query1.replace(k + "}", v[0] + v[1][m%self.n[k]] + "}")
+			query1 = query1.replace(k + ")", v[0] + v[1][m%self.n[k]] + ")")#"wd:"+v[m%3])
 			m = int(m/self.n[k])
 		self.i += 1
 		return query1
 
 	def hasNext(self):
+		print(str(self.i) + " totalN " + str(self.totalN))
 		return self.i < self.totalN
