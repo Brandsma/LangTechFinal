@@ -7,14 +7,20 @@ def getWikidataConcept(word):
 	params = {'action':'wbsearchentities', 'language':'en', 'format':'json'} #, 'type':'property'}
 	params['search'] = word.rstrip()
 	json = requests.get(url,params).json()
-	return json['search'][0]
+	try:
+		return json['search'][0]
+	except Exception:
+		return getWikidataConcept("Douglas Adams")
 
 def getWikidataProperty(word):		
 	url = "https://www.wikidata.org/w/api.php"
 	params = {'action':'wbsearchentities', 'language':'en', 'format':'json', 'type':'property'}
 	params['search'] = word.rstrip()
 	json = requests.get(url,params).json()
-	return json['search'][0]
+	try:
+		return json['search'][0]
+	except Exception:
+		return getWikidataProperty("Instance Of")
 
 def fireQuery(query):
 	sparql = SPARQLWrapper("https://query.wikidata.org/sparql")

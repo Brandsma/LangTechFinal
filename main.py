@@ -25,10 +25,12 @@
 
 # 			Query Fire
 
-#
-# Deadline: 6th of June
-#
-
+# Installation prerequisites
+# Spacy - sudo apt-get install spacy
+# SparqlWrapper - sudo apt-get install sparqlwrapper (?)
+# nltk - sudo apt-get install nltk
+# ntlk.wordnet - (Python3) import nltk && nltk.download('wordnet')
+ 
 from Question_Classifier import classifyQuestion, QuestionTypes
 from spacyFunctions import *
 from sparqlFunctions import *
