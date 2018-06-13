@@ -16,16 +16,18 @@ def createQuery(dict):
 	if varToBeShown == []:
 		query = '''ASK {'''
 	else:
-		query = '''SELECT '''
+		query = '''SELECT distinct '''
 		for var in varToBeShown:
-			query += var + '''Label '''
+			if var.startswith("(count"):
+				query += var
+			else:
+				query += var + '''Label '''
 		query += '''WHERE {'''
 
 	query += statement + ''' '''
 
 	query += '''SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }}'''
-	if varToBeShown != []:
-		query += ''' LIMIT 100'''
+
 	return query
 
 def sendQuery(query):
@@ -37,15 +39,12 @@ def replaceQuery(query, i, replaceDictionary):
 	m = i	
 	query1 = query
 	for k, v in replaceDictionary.items():
-		#print(k, ", ", v[m%3])
-		#print(query)
 		query1 = query1.replace(k, v[0] + v[1][m%3])#"wd:"+v[m%3])
 		j += 1
 		m = int(m/3)
 	return query1
 
 def formatResults(results):
-	print(results)
 	if 'boolean' in results: #results == "true" or results == "false":
 		return [results['boolean']]
 
@@ -56,15 +55,7 @@ def formatResults(results):
 		for var in item :
 			li[var] = item[var]['value']
 			string += li[var] + "\t"				
-			#print(li[var], "\t")
-		#string += "\n"
-		#print(string)
 		returnResult.append(string)
-	#print(returnResult)
-	#for result in returnResult:
-	#	for k, v in result.items():
-	#		print(v, "\t")
-	#s		print("hello")
 	return returnResult
 	
 
@@ -73,20 +64,13 @@ def fireQuery(query, replaceDictionary):
 	rq = Query(query, replaceDictionary)
 	while rq.hasNext():
 		query1 = rq.getNext()
-		print("\n\n\n")
-		print(query1)
-		print("\n\n\n")
 		try:
 			data = sendQuery(query1)
 			result = formatResults(data)
-			print(type(result))
-			print(result)
-			if type(result) == type({}) and boolean in result:
-				print("Type: " + str(type(result['boolean'])))
-			if result != [] and result != [False]:
+			if result != [] and result != [False] and result != ["0\t"]:
 				return result
 		except Exception:
-			traceback.print_exc()
+			pass
 	if (result == [False]):
 		return result
 	raise ValueError

@@ -1,0 +1,1 @@
+The program can be run by calling "python3 main.py" from the command line. It is able to read the input from the stdin. Therefore you can use 'echo "1 What is the capital of England?" | python3 main.py' to insert a question.

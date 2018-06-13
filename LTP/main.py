@@ -1,18 +1,17 @@
 import sys
 import gc
+import re
 from answer import *
 from dependency import loadSpacy, createDependencyTree
 
-gc.collect()
-loadSpacy()
 for line in sys.stdin:
-	print(createDependencyTree(line)[0].dep_)
-	#try:
-	answers = answer(line)
+	m = re.search("(.*)\t(.*)", line)
+	string = m.group(1)
+	answers = answer(m.group(2))
 	if len(answers) == 0:
-		print("Could not find an answer.")
+		string += "\tCould not find an answer."
 	else:
 		for a in answers:
-			print(a) 
-	#except Exception:
-	#	print("I could not find an answer. Please ask a proper question!")
+			string += "\t" + a
+	print(string)
+	

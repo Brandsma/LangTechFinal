@@ -3,10 +3,12 @@ from parseVerb import *
 from query import *
 
 def answer(question):
-	result = createDependencyTree(question)
-	root = findRoot(result)
-	res = parseVerb(root, None)
-	print(res)
-	query = createQuery(res)
-	queryResult = fireQuery(query, res["replaceDictionary"])
+	try:
+		result = createDependencyTree(question)
+		root = findRoot(result)
+		res = parseVerb(root, None)
+		query = createQuery(res)
+		queryResult = fireQuery(query, res["replaceDictionary"])
+	except:
+		queryResult = []
 	return queryResult
