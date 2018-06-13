@@ -12,6 +12,6 @@ for line in sys.stdin:
 		string += "\tCould not find an answer."
 	else:
 		for a in answers:
-			string += "\t" + a
+			string += "\t" + str(a)
 	print(string)
 	

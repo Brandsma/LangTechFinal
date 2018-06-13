@@ -1,0 +1,52 @@
+1	Could not find an answer.
+2	Lomé	
+3	Could not find an answer.
+4	Could not find an answer.
+5	Could not find an answer.
+6	1006	
+7	
+8	False
+9	True
+10	La Marseillaise	
+11		federal system		federation	
+12	Could not find an answer.
+13	1	
+14	Mount Everest	
+13	Could not find an answer.
+14	1	
+15	2758	
+16	True
+17	Could not find an answer.
+18	True
+19	Could not find an answer.
+20	1	
+21	7	
+22	Could not find an answer.
+23	
+24	Could not find an answer.
+25	Could not find an answer.
+26	Upupa epops	
+27	Could not find an answer.
+28	
+29	Could not find an answer.
+30	True
+31	Could not find an answer.
+32	http://newzealand.govt.nz/	
+33	Could not find an answer.
+34	Could not find an answer.
+35	Étang de Lavalduc	
+36	Could not find an answer.
+37	True
+38	Dutch		Papiamento	
+39	Could not find an answer.
+40	Could not find an answer.
+41	True
+42	Could not find an answer.
+43	Could not find an answer.
+44	Canada		Japan		Norway		England		Scotland		Ireland		Northern Ireland		Wales		Hungary		Spain		United States of America		Belgium		Luxembourg		Finland		Sweden		Poland		Denmark		Italy		Lithuania		Switzerland		Austria		Turkey		Greece		Mexico		Netherlands		Egypt		Ethiopia		France		Antarctica		Portugal		Kenya		Ghana		United Kingdom		People's Republic of China		Brazil		Russia		Germany		Belarus		Iceland		Estonia		Ukraine		Latvia		Czech Republic		Romania		Bulgaria		Slovakia		Slovenia		Moldova		Republic of Macedonia		Azerbaijan		Croatia		Albania		Greenland		Bosnia and Herzegovina		Andorra		Georgia		Cyprus		Kazakhstan		Malta		Cuba		Chile		Montenegro		Indonesia		South Africa		Uzbekistan		Belize		Algeria		Bahrain		Armenia		Singapore		Liechtenstein		Serbia		Australia		Peru		Argentina		Chad		Cambodia		New Zealand		North Korea		East Timor		India		Ecuador		Guyana		Nauru		Vanuatu		Palau		Colombia		Bolivia		Suriname		Paraguay		Papua New Guinea		Mongolia		Solomon Islands		Venezuela		Fiji		Trinidad and Tobago		Guatemala		Honduras		Yemen		Jamaica		Panama		Costa Rica		El Salvador		Iran		Israel		Dominican Republic		Iraq		Haiti		Maldives		Kuwait		Jordan		Lebanon		Nicaragua		Pakistan		Malaysia		Nepal		Myanmar		Sri Lanka		Qatar		Oman		Kyrgyzstan		Saudi Arabia		Afghanistan		Mali		Philippines		Taiwan		United Arab Emirates		Syria		Angola		Tanzania		South Korea		Brunei		Turkmenistan		Tajikistan		Vietnam		Thailand		Bangladesh		Cameroon		Mozambique		Burkina Faso		Mauritius		Benin		Namibia		Nigeria		Zimbabwe		Malawi		Cape Verde		Ivory Coast		Libya		Republic of the Congo		Tunisia		Morocco		Liberia		Zambia		Madagascar		Democratic Republic of the Congo		Botswana		South Sudan		Burundi		Puerto Rico		Texas		Chukotka Autonomous Okrug		Guam		Turkish Republic of Northern Cyprus		Anguilla		Dorwinion		Kashmir		Sikkim		Gibraltar		Sierra Leone		Dnipro		Aruba		Catalonia		Zanzibar		Cook Islands		Isle of Man		Kosovo		Senegal		Faroe Islands		Akrotiri and Dhekelia		State of Palestine		Somalia		Uganda		Rwanda		South Georgia and the South Sandwich Islands		Rhûn		Rhovanion		Republic of Artsakh	
+45	051	
+46	Could not find an answer.
+47	Could not find an answer.
+48	Could not find an answer.
+49	Saint George	
+50	Could not find an answer.
